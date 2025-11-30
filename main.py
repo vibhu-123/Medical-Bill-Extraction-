@@ -205,9 +205,6 @@ import base64
 API_KEY = "PASTE_YOUR_API_KEY_HERE"
 client = Client(api_key=API_KEY)
 
-# -----------------------------------------
-# DOWNLOAD FILE
-# -----------------------------------------
 def download_from_url(url):
     r = requests.get(url)
     if r.status_code != 200:
@@ -221,23 +218,16 @@ def download_from_url(url):
 
     return filename
 
-# -----------------------------------------
-# TEXT EXTRACTION
-# -----------------------------------------
 def extract_text_from_file(filepath):
 
     if filepath.endswith(".pdf"):
         doc = fitz.open(filepath)
-        pages = [p.get_text() for p in doc]
-        return pages
+        return [p.get_text() for p in doc]
 
     with open(filepath, "rb") as f:
         b64 = base64.b64encode(f.read()).decode()
 
-    prompt = """
-    Extract ALL visible text from this medical bill image.
-    Return ONLY text. No markdown.
-    """
+    prompt = "Extract all text from medical bill image."
 
     response = client.models.generate_content(
         model="models/gemini-2.0-flash",
@@ -249,13 +239,10 @@ def extract_text_from_file(filepath):
 
     return [response.text]
 
-# -----------------------------------------
-# BILL ITEM EXTRACTION
-# -----------------------------------------
 def extract_bill_items(page_texts):
 
     prompt = f"""
-    Extract bill items strictly in JSON:
+    Extract bill items in JSON:
 
     {{
       "pagewise_line_items": [
@@ -274,7 +261,7 @@ def extract_bill_items(page_texts):
       ]
     }}
 
-    BILL TEXT:
+    TEXT:
     {page_texts}
     """
 
@@ -286,9 +273,6 @@ def extract_bill_items(page_texts):
     raw = response.text.replace("```json", "").replace("```", "")
     return json.loads(raw)
 
-# -----------------------------------------
-# TOTAL CALCULATION
-# -----------------------------------------
 def compute_totals(data):
 
     total_items = 0
@@ -311,9 +295,6 @@ def format_final_output(data):
         "data": data
     }
 
-# -----------------------------------------
-# MAIN FUNCTION USED BY FASTAPI
-# -----------------------------------------
 def extract_bill_from_url(request_json):
 
     url = request_json["document"]
