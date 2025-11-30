@@ -1,0 +1,100 @@
+📥 Downloading from URL...
+🔍 Extracting text...
+📄 PDF detected — extracting pages...
+🤖 Sending to Gemini LLM...
+🧮 Computing totals...
+
+==================== FINAL JSON ====================
+📥 Downloading from URL...
+🔍 Extracting text...
+📄 PDF detected — extracting pages...
+🤖 Sending to Gemini LLM...
+🧮 Computing totals...
+{
+  "is_success": true,
+  "data": {
+    "pagewise_line_items": [
+      {
+        "page_no": "1",
+        "page_type": "Bill Detail",
+        "bill_items": [
+          {
+            "item_name": "Consultation (Dr. Neo Church \nTharsis(Diabetologist, General Medicine))",
+            "item_rate": 1000.0,
+            "item_quantity": 4.0,
+            "item_amount": 4000.0
+          },
+          {
+            "item_name": "RENAL FUNCTION TEST (RFT)",
+            "item_rate": 240.0,
+            "item_quantity": 1.0,
+            "item_amount": 240.0
+          },
+          {
+            "item_name": "ELECTROLYTES",
+            "item_rate": 450.0,
+            "item_quantity": 1.0,
+            "item_amount": 450.0
+          },
+          {
+            "item_name": "URINE COMPLETE ANALYSIS",
+            "item_rate": 250.0,
+            "item_quantity": 1.0,
+            "item_amount": 250.0
+          },
+          {
+            "item_name": "GLUCOSE FASTING (FBS)",
+            "item_rate": 50.0,
+            "item_quantity": 1.0,
+            "item_amount": 50.0
+          },
+          {
+            "item_name": "X-Ray",
+            "item_rate": 500.0,
+            "item_quantity": 1.0,
+            "item_amount": 500.0
+          },
+          {
+            "item_name": "Registration",
+            "item_rate": 300.0,
+            "item_quantity": 1.0,
+            "item_amount": 300.0
+          },
+          {
+            "item_name": "Room Ward Charges",
+            "item_rate": 2000.0,
+            "item_quantity": 3.0,
+            "item_amount": 6000.0
+          },
+          {
+            "item_name": "DMO,(Ward)",
+            "item_rate": 500.0,
+            "item_quantity": 3.0,
+            "item_amount": 1500.0
+          },
+          {
+            "item_name": "Nursing Charge (Ward)",
+            "item_rate": 500.0,
+            "item_quantity": 3.0,
+            "item_amount": 1500.0
+          },
+          {
+            "item_name": "Maintenance Charges",
+            "item_rate": 200.0,
+            "item_quantity": 3.0,
+            "item_amount": 600.0
+          },
+          {
+            "item_name": "Nebulization",
+            "item_rate": 100.0,
+            "item_quantity": 10.0,
+            "item_amount": 1000.0
+          }
+        ]
+      }
+    ],
+    "total_item_count": 12,
+    "sub_total_amount": 16390.0,
+    "final_total_amount": 16390.0
+  }
+}
